@@ -25,12 +25,16 @@ public class MLP {
 	private Random random = new Random();
 
 	public MLP() {
-		double [][] wMatrix = new double [2][2];
-		wMatrix[0] = random.doubles(2,-2,2.01).toArray();
-		wMatrix[1] = random.doubles(2,-2,2.01).toArray();
+//		TODO: mudar tamanho da matriz
+		double [][] wMatrix = new double [4][4];
+		wMatrix[0] = random.doubles(4,-2,2.01).toArray();
+		wMatrix[1] = random.doubles(4,-2,2.01).toArray();
+		wMatrix[2] = random.doubles(4,-2,2.01).toArray();
+		wMatrix[3] = random.doubles(4,-2,2.01).toArray();
+
 		this.hidden = MatrixUtils.createRealMatrix(wMatrix);
-		this.biasHidden = MatrixUtils.createRealVector(random.doubles(2,-2,2.01).toArray());
-		this.output = MatrixUtils.createRealVector(random.doubles(2,-2,2.01).toArray());
+		this.biasHidden = MatrixUtils.createRealVector(random.doubles(4,-2,2.01).toArray());
+		this.output = MatrixUtils.createRealVector(random.doubles(4,-2,2.01).toArray());
 		biasOutputWeight = random.doubles(-2, 2.01).findFirst().getAsDouble();
 		this.learningRate = 0.2;
 		this.iterations = 100;
@@ -121,15 +125,14 @@ public class MLP {
 			this.MSE = 0.0;
 			for(int n=0;n<X.length;n++) {
 				forwardPropagation(X[n]);
-				this.backPropagation(y[n]);
+//				this.backPropagation(y[n]);
 			}		
 			this.MSE /= X.length;
-			System.out.println("Fim iteração: " + (it+1) + " MSE: " + this.MSE);
+//			System.out.println("Fim iteração: " + (it+1) + " MSE: " + this.MSE);
 		}
 	}
 	
-	private void printAll(String string) {
-		System.out.println(string);
+	public void printAll() {
 		System.out.println("hidden: " + this.hidden);
 		System.out.println("hiddenValues: " + this.hiddenValues);
 		System.out.println("biasHidden: " + this.biasHidden);
