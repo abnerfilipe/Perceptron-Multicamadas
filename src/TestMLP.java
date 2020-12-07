@@ -4,7 +4,6 @@ import java.math.RoundingMode;
 public class TestMLP {
 
 	public static void main(String[] args) throws Exception {
-		
 		try {
 		MLP mlp = new MLP();
 		double [] y = {1,1,0};
@@ -139,14 +138,11 @@ public class TestMLP {
 			{0.1995,0.369,0.3537,0.3462},
 			{0.3832,0.2321,0.0341,0.245}
 		};
-		
 		mlp.learningRate = 0.1;
-		
-		mlp.iterations = 140;
+		mlp.iterations = 149;
 		mlp.treinar(X,y);
 		double [][] teste = X;
 		double [] escolhido = new double[3];
-//			System.out.println("y1");
 			for(int i=1;i<4;i++) {
 				mlp.forwardPropagation(teste[i]);
 				double valor = new BigDecimal(mlp.outputValue).setScale(6, RoundingMode.HALF_EVEN).doubleValue();
